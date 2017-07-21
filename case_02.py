@@ -8,7 +8,7 @@ print df.head(3)
 df = pd.read_excel("Data.xlsx", "Sheet1")
 df = pd.read_csv("Data.txt", sep="\t")
 
-#to Date
+#Convert to Date
 #------------------------------------------
 from datetime import datetime
 char_date = 'Apr 1 2017 2:40 PM'
