@@ -2,7 +2,37 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
+print pd.__version__
+
 df = pd.read_excel("Data.xlsx", "Sheet1")
+
+#Numpy array
+#------------------------------------------
+a = np.array([1, 2, 3], [4, 5, 6])
+print(a.ndim + ' ' + a.size + ' ' + a.shape + ' ' + a.dtype)
+print(a[1, 0]) #[row, col]
+print(a[0, 0:3]) #row
+print(a[0, :]) #row
+print(a[:, 0]) #column
+
+a = np.zeros((2, 3))
+a = np.arange(4)
+a = np.arange(1, 25).reshape(2, 3, 4)
+
+a = np.random.randn(10000)
+
+#Logistic function
+#------------------------------------------
+x = np.linspace(0.0, 4 * np.pi, 100)
+plt.plot(x, np.sin(x))
+plt.plot(x, np.log(x + .1) / 3)
+plt.show()
+
+#Heat map
+#------------------------------------------
+a = np.random.rand(10, 10)
+plt.imshow(a, cmap='jet')
+plt.show()
 
 #Histogram
 #------------------------------------------
