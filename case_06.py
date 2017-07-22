@@ -154,3 +154,113 @@ plt.scatter(df['B'], df['C'])
 plt.title('Scatterplot of X+epsilon - and - sqrt(x)+sin(x)')
 #Scatterplot Matrix
 pd.scatter_matrix(df)
+
+#SciPy workshow
+#------------------------------------------
+import numpy as np
+from scipy import signal
+
+numpy.loadtxt()OR numpy.savetxt()
+
+from scipy import misc
+misc.imread(‘Image_Name.png’)
+
+from scipy import linalg
+mat = np.array([[2,1],[4.3]])    #For a square matrix ‘mat’
+linalg.det(mat)					 #only works on Square Matrix.
+
+#not work for Singular matrix, because its determinant is zero
+linalg.inv(sqr_mat)    #For a square matrix ‘sqr_mat’
+
+linalg.svd(mat)    #Returns 3 arguments after Singular Value Decomposition
+
+
+# To calculate the area under a Guassian curve, we use erf() function like this:
+scipy.special.erf()
+# Syntax for Gamma function:
+scipy.special.gamma()
+# In order to calculate the log of Gamma, we use the following syntax:
+scipy.special.gammaln()
+# Elliptic Function
+scipy.special.eppilj()
+# Nth order Bessel Function
+scipy.special.jn()
+
+
+from scipy import optimize
+def f(x):    #Defining function
+	return   x**3 + x**2 + np.sin(x) +np.cos(x)
+x = np.arrange(-50, 50, 0.01)
+#First two arguments are the limit and the last argument is the interval
+plt.plot(x, f(x))
+plt.show()    #To show the graph of the defined function
+
+#This algorithm calculates a gradient descent of the function from the starting point given in the argument and outputs the minima with zero gradient and positive second order derivative
+optimize.fmin_bfgs(f, o)
+#First argument is function’s name and second argument is the starting point of gradient descent
+
+# combines a local optimizer with stochastic sampling of starting points for the local optimizer, hence giving a costlier global minimum. The syntax to use this function is as follows:
+optimize.basinhopping(f, 0)
+#Brute force method can also be used for global optimization, but it is less efficient
+optimize.brute(f, 0)
+#find the local minimum within an interval for variables
+optimize.fminbound(f, -50, 50)    #Argument is interval for the variable.
+
+#estimate the roots of a scalar function by finding the solution of the equation; f(x) = 0
+roots = optimize.fsolve(f)
+
+#using least squares curve fitting
+x_data = np.linspace(-100, 100, 0.1)
+y_data = g(x_data)+ np.random.randn(x_data.size)
+
+
+def h(x, a, b):
+	return a*x + b*np.cos(x)
+initial_guess_ab = [1, 1]
+variables, variables_covariance = optimize.curve_fit(h, x_data, y_data, initial_guess_ab)
+
+#Fourier Transformation is computed on a time domain signal to check its behaviour in frequency domain
+signal = np.sin(x +10)
+x = np.linspace(-100, 100, 0.1)
+time_step = 0.01
+
+#Since the signal is a real function, its fourier transform will be symmetric
+from scipy import fftpack
+sampling_frequency = fftpack.fftfreq(signal.size, d=time_step)
+signal_fft = fftpack.fft(signal)
+
+#Similarly an inverse Fourier transform can be computed
+original_signal = fftpack.ifft(signal_fft)
+
+from scipy.integrate import quad
+result, error = quad(np.sin, 0, np.pi/2)
+
+def derivative_equation(x, time):
+	return 10 * time
+from scipy.integrate import odeint
+time_step = np.linspace(0, 10, 100)    #Time step is 0.1 from [0, 100)
+x_value, info = odeint(derivative_equation, 1, time_step)
+
+
+from scipy import ndimage
+ndimage.shift(image, (x, y))    #Shifting Image with (x, y) coordinate
+ndimage.rotate(image, angle)    #Rotating image to that angle
+ndimage.zoom(image, magnitude)  #Zooming image with the magnitude
+
+ndimage.median_filter(image, argument)            #Filtering image using Median filter
+ndimage.gaussian_filter(image, argument)          #Filtering image using Gaussian filter
+
+ndimage.binary_erosion(image)           #Binary Erosion on image
+ndimage.binary_dilation(image)          #Binary Dilation on image
+ndimage.binary_opening(image)           #Binary Opening on image
+ndimage.binary_closing(opened_image)    #Binary Closing on opened image
+
+#Resampling using Fourier transform
+t = np.linspace(-10, 10, 200)    #Defining Time Interval
+y = np.sin(t)
+signal.resample(y, 100)          # Number of required samples is 100
+
+#Removing Linear Trend
+t = np.linspace(-10, 10, 200)    #Defining Time Interval
+y = np.sin(t) + t
+signal.detrend(y)                # To remove the linear‘t’ variable in the equation
