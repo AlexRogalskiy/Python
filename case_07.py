@@ -32,3 +32,7 @@ Sample_List[:0] = [“workaround”, 8, 1.5]
 
 Sample_list_New = [item for item in num_list if item <5]
 
+#Misc
+my_container = ['Larry', 'Moe', 'Curly']
+for index, element in enumerate(my_container):
+    print ('{} {}'.format(index, element))
