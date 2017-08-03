@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-print pd.__version__
+print (pd.__version__)
 
 df = pd.read_excel("Data.xlsx", "Sheet1")
 
