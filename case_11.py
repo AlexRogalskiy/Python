@@ -165,3 +165,16 @@ def count_partial_derangements(n, k):
     """Returns the number of permutations of n with k fixed points."""
     return sum(1 for p in itertools.permutations(xrange(n)) if count_fixed_points(p) == k)
 [count_partial_derangements(6, i) for i in xrange(7)]
+
+
+nums = []  # creates empty array/list for numbers
+lowestNum = float("Infinity")  # highest possible number - will be replaced
+highestNum = float("-Infinity")  # lowest possible number - will be replaced
+while True:  # so it keeps looping
+	nums.append(float(input("Enter a number to be added to the list:")))  # add a number to the list
+	for i in nums:  # iterates through array
+		if i > highestNum:  # if it's higher than the current highest number
+			highestNum = i  # replace it
+		if i < lowestNum:  # if it's lower than the current lowest number
+			lowestNum = i  # replace it
+	print("The current highest number is", highestNum, "and the current lowest number is", lowestNum)  # prints current highest/lowest numbers
